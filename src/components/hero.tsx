@@ -5,7 +5,7 @@ export default function Hero() {
     <section id="home" className="py-24 sm:py-32 md:py-40">
       <div className="container max-w-7xl text-center">
         <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-tight md:leading-snug">
-          Where Creativity <span className="text-primary">Meets</span> Design
+          Where Creativity <span className="text-primary">Meets</span> Designs
         </h1>
         <p className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground font-body">
           Crafting unique visual identities and compelling digital experiences that resonate with your audience and elevate your brand.

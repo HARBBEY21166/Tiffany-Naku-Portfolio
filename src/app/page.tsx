@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState, useEffect } from 'react';
 import Header from '@/components/header';
 import Hero from '@/components/hero';
 import Skills from '@/components/skills';
@@ -8,8 +9,9 @@ import About from '@/components/about';
 import Testimonials from '@/components/testimonials';
 import Contact from '@/components/contact';
 import Footer from '@/components/footer';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Pricing from '@/components/pricing';
+import Preloader from '@/components/preloader';
 
 const MotionSection = ({ children }: { children: React.ReactNode }) => (
     <motion.div
@@ -23,19 +25,42 @@ const MotionSection = ({ children }: { children: React.ReactNode }) => (
 );
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // Adjust time as needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-grow">
-        <MotionSection><Hero /></MotionSection>
-        <MotionSection><Skills /></MotionSection>
-        <MotionSection><Portfolio /></MotionSection>
-        <MotionSection><About /></MotionSection>
-        <MotionSection><Testimonials /></MotionSection>
-        <MotionSection><Pricing /></MotionSection>
-        <MotionSection><Contact /></MotionSection>
-      </main>
-      <Footer />
-    </div>
+    <>
+      <AnimatePresence>
+        {isLoading && <Preloader />}
+      </AnimatePresence>
+      
+      {!isLoading && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col min-h-screen"
+        >
+          <Header />
+          <main className="flex-grow">
+            <MotionSection><Hero /></MotionSection>
+            <MotionSection><Skills /></MotionSection>
+            <MotionSection><Portfolio /></MotionSection>
+            <MotionSection><About /></MotionSection>
+            <MotionSection><Testimonials /></MotionSection>
+            <MotionSection><Pricing /></MotionSection>
+            <MotionSection><Contact /></MotionSection>
+          </main>
+          <Footer />
+        </motion.div>
+      )}
+    </>
   );
 }
