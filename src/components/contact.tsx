@@ -1,66 +1,62 @@
 "use client"
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
 import React from "react"
-
 import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
 import { useToast } from "@/hooks/use-toast"
-import { sendContactMessage } from "@/ai/flows/contact-flow"
-
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  message: z.string().min(10, {
-    message: "Message must be at least 10 characters.",
-  }).max(500, {
-    message: "Message must not be longer than 500 characters."
-  }),
-})
+import { Label } from "./ui/label"
 
 export default function Contact() {
   const { toast } = useToast();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      message: "",
-    },
-  })
+  const [result, setResult] = React.useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setResult("Sending....");
+
+    const formData = new FormData(event.currentTarget);
+    formData.append("access_key", "7bff244b-11e9-43da-814c-af569e6f1ea8");
+
     try {
-      await sendContactMessage(values);
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for reaching out. I'll get back to you shortly.",
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
       });
-      form.reset();
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for reaching out. I'll get back to you shortly.",
+        });
+        (event.target as HTMLFormElement).reset();
+        setResult(null);
+      } else {
+        console.error("Error submitting form:", data);
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: data.message || "There was a problem sending your message. Please try again.",
+        });
+        setResult(data.message);
+      }
     } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Uh oh! Something went wrong.",
-        description: "There was a problem sending your message. Please try again.",
-      });
+        console.error("Error submitting form:", error);
+        toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "There was a problem sending your message. Please try again.",
+        });
+        setResult("An error occurred.");
+    } finally {
+        setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <section id="contact" className="py-16 md:py-24 bg-secondary">
@@ -78,59 +74,33 @@ export default function Contact() {
                 <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
             </CardHeader>
             <CardContent>
-                <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <form onSubmit={onSubmit} className="space-y-8">
                     <div className="grid md:grid-cols-2 gap-8">
-                        <FormField
-                            control={form.control}
-                            name="name"
-                            render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Name</FormLabel>
-                                <FormControl>
-                                <Input placeholder="Your Name" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Email</FormLabel>
-                                <FormControl>
-                                <Input placeholder="your.email@example.com" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                            )}
-                        />
+                        <div className="space-y-2">
+                            <Label htmlFor="name">Name</Label>
+                            <Input id="name" type="text" name="name" placeholder="Your Name" required/>
+                        </div>
+                        <div className="space-y-2">
+                           <Label htmlFor="email">Email</Label>
+                           <Input id="email" type="email" name="email" placeholder="your.email@example.com" required/>
+                        </div>
                     </div>
-                    <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormLabel>Message</FormLabel>
-                        <FormControl>
-                            <Textarea
+                    <div className="space-y-2">
+                        <Label htmlFor="message">Message</Label>
+                        <Textarea
+                            id="message"
+                            name="message"
                             placeholder="Tell me about your project..."
                             className="resize-none"
                             rows={6}
-                            {...field}
-                            />
-                        </FormControl>
-                        <FormMessage />
-                        </FormItem>
-                    )}
-                    />
-                    <Button type="submit" disabled={form.formState.isSubmitting}>
-                      {form.formState.isSubmitting ? "Sending..." : "Send Message"}
+                            required
+                        />
+                    </div>
+                    <Button type="submit" disabled={isSubmitting}>
+                      {isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
                 </form>
-                </Form>
+                {result && <p className="mt-4 text-sm text-muted-foreground">{result}</p>}
             </CardContent>
         </Card>
       </div>
