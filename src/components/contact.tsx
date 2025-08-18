@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import React from "react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -17,6 +18,8 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
+import { sendContactMessage } from "@/ai/flows/contact-flow"
+import { Loader2 } from "lucide-react"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -34,6 +37,7 @@ const formSchema = z.object({
 
 export default function Contact() {
   const { toast } = useToast()
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -44,13 +48,28 @@ export default function Contact() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    })
-    form.reset()
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    try {
+      const result = await sendContactMessage(values);
+      if (result.success) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        })
+        form.reset()
+      } else {
+        throw new Error("Failed to send message.");
+      }
+    } catch (error) {
+       toast({
+        title: "Oh no! Something went wrong.",
+        description: "There was a problem with your request. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -79,7 +98,7 @@ export default function Contact() {
                             <FormItem>
                                 <FormLabel>Name</FormLabel>
                                 <FormControl>
-                                <Input placeholder="Your Name" {...field} />
+                                <Input placeholder="Your Name" {...field} disabled={isSubmitting} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -92,7 +111,7 @@ export default function Contact() {
                             <FormItem>
                                 <FormLabel>Email</FormLabel>
                                 <FormControl>
-                                <Input placeholder="your.email@example.com" {...field} />
+                                <Input placeholder="your.email@example.com" {...field} disabled={isSubmitting} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -111,13 +130,17 @@ export default function Contact() {
                             className="resize-none"
                             rows={6}
                             {...field}
+                            disabled={isSubmitting}
                             />
                         </FormControl>
                         <FormMessage />
                         </FormItem>
                     )}
                     />
-                    <Button type="submit">Send Message</Button>
+                    <Button type="submit" disabled={isSubmitting}>
+                      {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
                 </form>
                 </Form>
             </CardContent>
