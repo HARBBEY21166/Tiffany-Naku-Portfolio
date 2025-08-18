@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, WandSparkles, Moon, Sun } from "lucide-react";
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -82,8 +82,11 @@ export default function Header() {
                 </Button>
                 </SheetTrigger>
                 <SheetContent side="right">
+                    <SheetHeader>
+                        <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                    </SheetHeader>
                     <nav className="flex flex-col gap-6 pt-12">
-                        <a href="#" className="flex items-center gap-2 mb-4">
+                        <a href="#" className="flex items-center gap-2 mb-4" onClick={handleLinkClick}>
                             <WandSparkles className="h-6 w-6 text-primary" />
                             <span className="font-headline text-2xl font-bold">Tiffany Naku</span>
                         </a>
