@@ -52,7 +52,7 @@ export default function Home() {
           <main className="flex-grow">
             <MotionSection><Hero /></MotionSection>
             <MotionSection><Skills /></MotionSection>
-            <MotionSection><Portfolio /></MotionSection>
+            <Portfolio />
             <MotionSection><About /></MotionSection>
             <MotionSection><Testimonials /></MotionSection>
             <MotionSection><Pricing /></MotionSection>
