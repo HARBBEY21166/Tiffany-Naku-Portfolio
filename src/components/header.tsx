@@ -8,7 +8,7 @@ import { Menu, WandSparkles } from "lucide-react";
 const navLinks = [
   { name: "Work", href: "#work" },
   { name: "About", href: "#about" },
-  { name: "AI Advisor", href: "#ai-advisor" },
+  { name: "Skills", href: "#skills" },
   { name: "Contact", href: "#contact" },
 ];
 

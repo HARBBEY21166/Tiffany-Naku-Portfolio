@@ -60,3 +60,20 @@
     @apply scroll-smooth;
   }
 }
+
+@layer components {
+  .icon-bounce {
+    @apply transition-transform duration-300 ease-in-out;
+  }
+  .icon-bounce:hover {
+    animation: bounce 0.6s;
+  }
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}

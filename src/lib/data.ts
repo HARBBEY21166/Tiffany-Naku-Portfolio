@@ -4,50 +4,143 @@ export type PortfolioPiece = {
   image: string;
   aiHint: string;
   tags: string[];
+  category: string;
 };
 
+export const portfolioCategories = ["Branding", "Web Design", "UI/UX", "Illustration"];
+
 export const portfolioPieces: PortfolioPiece[] = [
+  // Branding
   {
     title: "Vibrant Strokes",
-    description: "A bold and energetic branding identity for a digital art festival, focusing on dynamic color palettes and abstract shapes.",
+    description: "Bold, energetic branding for a digital art festival.",
     image: "https://placehold.co/600x800.png",
     aiHint: "abstract vibrant",
     tags: ["Branding", "Event"],
-  },
-  {
-    title: "Eco-Wear",
-    description: "Minimalist and clean web design for a sustainable fashion brand, emphasizing natural textures and earthy tones.",
-    image: "https://placehold.co/600x800.png",
-    aiHint: "fashion minimalist",
-    tags: ["Web Design", "E-commerce"],
-  },
-  {
-    title: "Future Now",
-    description: "Futuristic UI/UX concept for a smart home application, featuring holographic elements and a dark, moody interface.",
-    image: "https://placehold.co/600x800.png",
-    aiHint: "futuristic dark",
-    tags: ["UI/UX", "Mobile App"],
+    category: "Branding",
   },
   {
     title: "Gourmet Bites",
-    description: "Elegant packaging design for a luxury chocolate brand, using gold foil and intricate patterns to convey sophistication.",
+    description: "Elegant packaging for a luxury chocolate brand.",
     image: "https://placehold.co/600x800.png",
     aiHint: "elegant packaging",
     tags: ["Packaging", "Branding"],
+    category: "Branding",
   },
   {
-    title: "Retro Revival",
-    description: "A series of posters inspired by 80s synthwave aesthetics, with neon grids and chrome typography.",
+    title: "Eco-Friendly",
+    description: "Identity for a sustainable products company.",
     image: "https://placehold.co/600x800.png",
-    aiHint: "retro neon",
-    tags: ["Illustration", "Poster Design"],
+    aiHint: "eco friendly",
+    tags: ["Branding", "Identity"],
+    category: "Branding",
+  },
+  {
+    title: "SoundWave",
+    description: "Logo and branding for a music streaming startup.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "music logo",
+    tags: ["Logo", "Branding"],
+    category: "Branding",
+  },
+  // Web Design
+  {
+    title: "Eco-Wear",
+    description: "Minimalist, clean web design for a fashion brand.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "fashion minimalist",
+    tags: ["Web Design", "E-commerce"],
+    category: "Web Design",
   },
   {
     title: "Urban Explorer",
-    description: "A modern and engaging editorial layout for a travel magazine, focusing on powerful photography and clean typography.",
+    description: "Engaging editorial layout for a travel magazine.",
     image: "https://placehold.co/600x800.png",
     aiHint: "magazine layout",
-    tags: ["Editorial", "Print"],
+    tags: ["Editorial", "Print", "Web"],
+    category: "Web Design",
+  },
+  {
+    title: "Tech-Forward",
+    description: "Corporate website for a software development company.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "tech website",
+    tags: ["Web Design", "Corporate"],
+    category: "Web Design",
+  },
+  {
+    title: "Artisan Cafe",
+    description: "Warm and inviting website for a local coffee shop.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "cafe website",
+    tags: ["Web Design", "Local Business"],
+    category: "Web Design",
+  },
+  // UI/UX
+  {
+    title: "Future Now",
+    description: "Futuristic UI/UX for a smart home application.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "futuristic dark",
+    tags: ["UI/UX", "Mobile App"],
+    category: "UI/UX",
+  },
+  {
+    title: "HealthTrack",
+    description: "User-friendly interface for a fitness tracking app.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "fitness app",
+    tags: ["UI/UX", "Health"],
+    category: "UI/UX",
+  },
+  {
+    title: "ConnectSphere",
+    description: "Dashboard design for a social media analytics tool.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "dashboard analytics",
+    tags: ["UI/UX", "Dashboard"],
+    category: "UI/UX",
+  },
+  {
+    title: "LearnLink",
+    description: "Intuitive design for an e-learning platform.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "elearning platform",
+    tags: ["UI/UX", "Education"],
+    category: "UI/UX",
+  },
+  // Illustration
+  {
+    title: "Retro Revival",
+    description: "Posters inspired by 80s synthwave aesthetics.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "retro neon",
+    tags: ["Illustration", "Poster Design"],
+    category: "Illustration",
+  },
+  {
+    title: "Cosmic Dreams",
+    description: "A series of celestial-themed digital illustrations.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "space illustration",
+    tags: ["Illustration", "Digital Art"],
+    category: "Illustration",
+  },
+  {
+    title: "Botanical Wonders",
+    description: "Detailed vector illustrations of exotic plants.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "plant illustration",
+    tags: ["Illustration", "Vector Art"],
+    category: "Illustration",
+  },
+  {
+    title: "Character-Verse",
+    description: "A collection of unique and expressive characters.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "character design",
+    tags: ["Illustration", "Characters"],
+    category: "Illustration",
   },
 ];
 
