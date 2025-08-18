@@ -25,9 +25,7 @@ export default function Portfolio() {
       boxShadow: "0px 10px 30px rgba(0,0,0,0.1)",
     },
     hover: {
-      scale: 1.05,
-      rotateY: 10,
-      rotateX: 5,
+      scale: 1.03,
       boxShadow: "0px 20px 40px rgba(0,0,0,0.2)",
       transition: {
         type: "spring",
@@ -48,7 +46,7 @@ export default function Portfolio() {
         </div>
 
         <Tabs defaultValue="All" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 md:grid-cols-5 lg:grid-cols-9 mx-auto max-w-4xl mb-12">
+          <TabsList className="grid w-full grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-9 mx-auto max-w-4xl mb-12">
             {categories.map((category) => (
               <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
             ))}
@@ -58,7 +56,7 @@ export default function Portfolio() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {allPieces.slice(0, visibleItems).map((piece, index) => (
                     <motion.div key={index} initial="rest" whileHover="hover" animate="rest" variants={cardVariants}>
-                      <Card className="overflow-hidden group transition-all duration-300 flex flex-col h-full">
+                      <Card className="overflow-hidden group transition-all duration-300 flex flex-col h-full shadow-md hover:shadow-xl">
                         <CardContent className="p-0 flex-grow">
                           <div className="relative h-96">
                             <Image
@@ -98,7 +96,7 @@ export default function Portfolio() {
                   .filter((piece) => piece.category === category)
                   .map((piece, index) => (
                      <motion.div key={index} initial="rest" whileHover="hover" animate="rest" variants={cardVariants}>
-                        <Card className="overflow-hidden group transition-all duration-300 flex flex-col h-full">
+                        <Card className="overflow-hidden group transition-all duration-300 flex flex-col h-full shadow-md hover:shadow-xl">
                           <CardContent className="p-0 flex-grow">
                             <div className="relative h-96">
                               <Image
