@@ -29,10 +29,15 @@ export default function About() {
           </div>
           <div className="md:col-span-3 space-y-8 font-body text-lg text-muted-foreground">
             <p>
-              Hello! I'm a passionate and detail-oriented graphic designer with a love for creating beautiful, functional, and user-centered designs. My journey began with a simple curiosity for how visuals can tell a story, which blossomed into a full-fledged career dedicated to branding, digital illustration, and UI/UX design.
+            I’m a multidisciplinary Graphic Designer based in Johannesburg (North),
+Gauteng. I’m proficient in various sectors of Graphic Design namely, digital
+illustration, 3D modeling and animation,branding, motion graphics, UI design as well as Copywriting.
             </p>
             <p>
-              I believe that great design is not just about aesthetics, but about solving problems and communicating ideas effectively. I thrive on collaborating with clients to bring their visions to life and create memorable experiences.
+            I’m a perfectionist, by nature, with a very
+strong work ethic who doesn’t shy away
+from learning new skills. I’m an individual who’s able to adapt to any work
+environment, given the chance.
             </p>
             <div className="space-y-6">
                 <div className="flex items-start gap-4 p-4 rounded-lg bg-secondary/50">

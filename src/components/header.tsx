@@ -48,7 +48,7 @@ export default function Header() {
       <div className="container flex h-20 max-w-7xl items-center justify-between">
         <a href="#" className="flex items-center gap-2 group">
           <WandSparkles className="h-7 w-7 text-primary transition-transform duration-300 group-hover:rotate-12" />
-          <span className="font-headline text-3xl font-bold">VisioFolio</span>
+          <span className="font-headline text-3xl font-bold">Tiffany Naku</span>
         </a>
 
         <nav className="hidden md:flex gap-2 items-center">
@@ -86,7 +86,7 @@ export default function Header() {
                     <nav className="flex flex-col gap-6 pt-12">
                         <a href="#" className="flex items-center gap-2 mb-4">
                             <WandSparkles className="h-6 w-6 text-primary" />
-                            <span className="font-headline text-2xl font-bold">VisioFolio</span>
+                            <span className="font-headline text-2xl font-bold">Tiffany Naku</span>
                         </a>
                         {navLinks.map((link, index) => (
                         <motion.a

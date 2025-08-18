@@ -1,4 +1,4 @@
-# **App Name**: VisioFolio
+# **App Name**: Tiffany Naku
 
 ## Core Features:
 

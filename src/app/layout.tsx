@@ -4,7 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'VisioFolio',
+  title: 'Tiffany Naku',
   description: 'Portfolio of a Creative Graphic Designer',
 };
 
