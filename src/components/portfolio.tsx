@@ -6,8 +6,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { portfolioPieces, portfolioCategories } from '@/lib/data';
-import type { PortfolioPiece } from '@/lib/data';
 
 const PortfolioSection = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -18,6 +24,11 @@ const PortfolioSection = () => {
     : portfolioPieces.filter(p => p.category === activeCategory);
 
   const projectsToShow = filteredProjects.slice(0, visibleItems);
+
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category);
+    setVisibleItems(8);
+  };
 
   const loadMore = () => {
     setVisibleItems(prev => prev + 8);
@@ -33,15 +44,29 @@ const PortfolioSection = () => {
           </p>
         </div>
 
-        <div className="flex justify-center flex-wrap gap-2 mb-12">
+        {/* Mobile Dropdown */}
+        <div className="md:hidden mb-8">
+          <Select onValueChange={handleCategoryChange} defaultValue={activeCategory}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select a category" />
+            </SelectTrigger>
+            <SelectContent>
+              {portfolioCategories.map(category => (
+                <SelectItem key={category} value={category}>
+                  {category}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Desktop Tabs */}
+        <div className="hidden md:flex justify-center flex-wrap gap-2 mb-12">
           {portfolioCategories.map(category => (
             <Button
               key={category}
               variant={activeCategory === category ? 'default' : 'ghost'}
-              onClick={() => {
-                setActiveCategory(category);
-                setVisibleItems(8);
-              }}
+              onClick={() => handleCategoryChange(category)}
               className="capitalize"
             >
               {category}
@@ -60,7 +85,7 @@ const PortfolioSection = () => {
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.3 }}
               >
-                <Card className="overflow-hidden h-full group">
+                <Card className="overflow-hidden h-full group shadow-md hover:shadow-xl transition-shadow duration-300">
                   <CardContent className="p-0">
                     <div className="relative aspect-[3/4] overflow-hidden">
                       <Image
