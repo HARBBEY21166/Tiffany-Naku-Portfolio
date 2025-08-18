@@ -12,7 +12,7 @@ const skills = [
   { name: "React", icon: "react" },
 ];
 
-const iconVariants = {
+const iconContainerVariants = {
   hidden: { y: 20, opacity: 0 },
   visible: (i: number) => ({
     y: 0,
@@ -24,6 +24,17 @@ const iconVariants = {
     },
   }),
 };
+
+const iconHoverVariants = {
+  hover: {
+    y: -10,
+    scale: 1.1,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+    },
+  }
+}
 
 const SvgIcon = ({ iconName, className }: { iconName: string, className: string }) => {
     const iconPaths: Record<string, string> = {
@@ -60,11 +71,15 @@ export default function Skills() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
-              variants={iconVariants}
+              variants={iconContainerVariants}
             >
-              <div className="bg-secondary p-6 rounded-lg inline-block hover:bg-primary/10 transition-colors">
+              <motion.div
+                className="bg-secondary p-6 rounded-lg inline-block hover:bg-primary/10 transition-colors"
+                variants={iconHoverVariants}
+                whileHover="hover"
+              >
                 <SvgIcon iconName={skill.icon} className="h-16 w-16 text-primary" />
-              </div>
+              </motion.div>
               <p className="mt-4 font-headline text-xl font-semibold">{skill.name}</p>
             </motion.div>
           ))}
