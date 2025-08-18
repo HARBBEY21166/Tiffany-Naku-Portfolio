@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -26,7 +25,7 @@ export default function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -43,7 +42,7 @@ export default function Header() {
   return (
     <header className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        isScrolled ? "border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "bg-transparent"
+        isScrolled ? "border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "bg-background md:bg-transparent"
     )}>
       <div className="container flex h-20 max-w-7xl items-center justify-between">
         <a href="#" className="flex items-center gap-2 group">
