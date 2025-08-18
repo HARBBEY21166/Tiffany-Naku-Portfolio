@@ -1,12 +1,22 @@
+
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { portfolioPieces, portfolioCategories } from "@/lib/data";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "./ui/button";
 
 export default function Portfolio() {
   const allPieces = portfolioPieces;
   const categories = portfolioCategories;
+  const [visibleItems, setVisibleItems] = useState(8);
+
+  const showMoreItems = () => {
+    setVisibleItems(allPieces.length);
+  };
 
   return (
     <section id="work" className="py-16 md:py-24 bg-secondary">
@@ -27,7 +37,7 @@ export default function Portfolio() {
           
           <TabsContent value="All">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {allPieces.map((piece, index) => (
+                {allPieces.slice(0, visibleItems).map((piece, index) => (
                     <Card key={index} className="overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col">
                       <CardContent className="p-0 flex-grow">
                         <div className="relative h-96">
@@ -53,6 +63,11 @@ export default function Portfolio() {
                     </Card>
                   ))}
               </div>
+              {visibleItems < allPieces.length && (
+                <div className="text-center mt-12">
+                  <Button onClick={showMoreItems} size="lg">View More</Button>
+                </div>
+              )}
             </TabsContent>
 
           {categories.filter(c => c !== 'All').map((category) => (
@@ -93,3 +108,4 @@ export default function Portfolio() {
     </section>
   );
 }
+
