@@ -17,6 +17,8 @@ import {
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
+import { useToast } from "@/hooks/use-toast"
+import { sendContactMessage } from "@/ai/flows/contact-flow"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -33,6 +35,7 @@ const formSchema = z.object({
 })
 
 export default function Contact() {
+  const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,11 +45,21 @@ export default function Contact() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    const subject = encodeURIComponent(`New message from ${values.name} on VisioFolio`);
-    const body = encodeURIComponent(`${values.message}\n\nFrom: ${values.name}\nEmail: ${values.email}`);
-    window.location.href = `mailto:olamilekansunday445@gmail.com?subject=${subject}&body=${body}`;
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      await sendContactMessage(values);
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you shortly.",
+      });
+      form.reset();
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem sending your message. Please try again.",
+      });
+    }
   }
 
   return (
@@ -113,8 +126,8 @@ export default function Contact() {
                         </FormItem>
                     )}
                     />
-                    <Button type="submit">
-                      Send Message
+                    <Button type="submit" disabled={form.formState.isSubmitting}>
+                      {form.formState.isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
                 </form>
                 </Form>
