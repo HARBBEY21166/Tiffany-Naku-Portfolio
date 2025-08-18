@@ -27,7 +27,7 @@ const PortfolioSection = () => {
 
   const handleCategoryChange = (category: string) => {
     setActiveCategory(category);
-    setVisibleItems(8);
+    setVisibleItems(8); 
   };
 
   const loadMore = () => {
