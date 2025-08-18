@@ -53,7 +53,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="font-headline text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-tight md:leading-snug"
         >
-          Where Creativity <span className="text-primary">Meets</span> Design
+          Where Creativity <span className="text-primary">Meets</span> Designs
         </motion.h1>
         <motion.p 
             initial={{ opacity: 0, y: 20 }}

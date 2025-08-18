@@ -1,124 +1,100 @@
 
 "use client";
 
-import Image from "next/image";
-import { useState } from "react";
-import { portfolioPieces, portfolioCategories } from "@/lib/data";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Button } from "./ui/button";
-import { motion } from "framer-motion";
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import { portfolioPieces, portfolioCategories } from '@/lib/data';
+import type { PortfolioPiece } from '@/lib/data';
 
-export default function Portfolio() {
-  const allPieces = portfolioPieces;
-  const categories = portfolioCategories;
+const PortfolioSection = () => {
+  const [activeCategory, setActiveCategory] = useState('All');
   const [visibleItems, setVisibleItems] = useState(8);
-  const [activeTab, setActiveTab] = useState("All");
 
-  const showMoreItems = () => {
-    setVisibleItems(allPieces.length);
+  const filteredProjects = activeCategory === 'All'
+    ? portfolioPieces
+    : portfolioPieces.filter(p => p.category === activeCategory);
+
+  const projectsToShow = filteredProjects.slice(0, visibleItems);
+
+  const loadMore = () => {
+    setVisibleItems(prev => prev + 8);
   };
-
-  const cardVariants = {
-    rest: {
-      scale: 1,
-      boxShadow: "0px 10px 30px rgba(0,0,0,0.1)",
-    },
-    hover: {
-      scale: 1.03,
-      boxShadow: "0px 20px 40px rgba(0,0,0,0.2)",
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 20,
-      },
-    },
-  };
-
-  const renderPortfolioGrid = (pieces: typeof portfolioPieces) => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {pieces.map((piece, index) => (
-        <motion.div key={index} initial="rest" whileHover="hover" animate="rest" variants={cardVariants}>
-          <Card className="overflow-hidden group transition-all duration-300 flex flex-col h-full shadow-md hover:shadow-xl">
-            <CardContent className="p-0 flex-grow">
-              <div className="relative h-96">
-                <Image
-                  src={piece.image}
-                  alt={piece.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  data-ai-hint={piece.aiHint}
-                />
-              </div>
-            </CardContent>
-            <div className="p-6">
-              <h3 className="font-headline text-2xl font-semibold">{piece.title}</h3>
-              <p className="text-muted-foreground mt-2 font-body flex-grow">{piece.description}</p>
-            </div>
-            <CardFooter>
-              {piece.tags.map((tag) => (
-                <Badge key={tag} variant="outline" className="mr-2">{tag}</Badge>
-              ))}
-            </CardFooter>
-          </Card>
-        </motion.div>
-      ))}
-    </div>
-  );
 
   return (
-    <section id="work" className="py-16 md:py-24 bg-secondary" style={{ perspective: '1000px' }}>
+    <section id="work" className="py-16 md:py-24 bg-secondary">
       <div className="container max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="font-headline text-4xl md:text-5xl font-bold">My Work</h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-            A selection of projects that showcase my passion for creative design.
+            A selection of my projects.
           </p>
         </div>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          {/* Tabs for Desktop */}
-          <TabsList className="hidden md:grid w-full grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-9 mx-auto max-w-4xl mb-12">
-            {categories.map((category) => (
-              <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
-            ))}
-          </TabsList>
-          
-          {/* Select for Mobile */}
-          <div className="md:hidden mb-8">
-            <Select value={activeTab} onValueChange={setActiveTab}>
-                <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select a category" />
-                </SelectTrigger>
-                <SelectContent>
-                    {categories.map((category) => (
-                    <SelectItem key={category} value={category}>
-                        {category}
-                    </SelectItem>
-                    ))}
-                </SelectContent>
-            </Select>
-          </div>
-          
-          <TabsContent value="All">
-              {renderPortfolioGrid(allPieces.slice(0, visibleItems))}
-              {visibleItems < allPieces.length && activeTab === 'All' && (
-                <div className="text-center mt-12">
-                  <Button onClick={showMoreItems} size="lg">View More</Button>
-                </div>
-              )}
-          </TabsContent>
-
-          {categories.filter(c => c !== 'All').map((category) => (
-            <TabsContent key={category} value={category}>
-                {renderPortfolioGrid(portfolioPieces.filter((piece) => piece.category === category))}
-            </TabsContent>
+        <div className="flex justify-center flex-wrap gap-2 mb-12">
+          {portfolioCategories.map(category => (
+            <Button
+              key={category}
+              variant={activeCategory === category ? 'default' : 'ghost'}
+              onClick={() => {
+                setActiveCategory(category);
+                setVisibleItems(8);
+              }}
+              className="capitalize"
+            >
+              {category}
+            </Button>
           ))}
-        </Tabs>
+        </div>
+
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <AnimatePresence>
+            {projectsToShow.map((project, index) => (
+              <motion.div
+                key={`${project.title}-${index}`}
+                layout
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card className="overflow-hidden h-full group">
+                  <CardContent className="p-0">
+                    <div className="relative aspect-[3/4] overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        data-ai-hint={project.aiHint}
+                      />
+                       <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span className="text-white font-semibold text-lg border-2 border-white rounded-full px-4 py-2">View Project</span>
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-headline text-xl font-semibold">{project.title}</h3>
+                      <p className="text-muted-foreground mt-1">{project.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {visibleItems < filteredProjects.length && (
+          <div className="text-center mt-12">
+            <Button onClick={loadMore} size="lg">
+              View More
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
-}
+};
+
+export default PortfolioSection;
