@@ -5,6 +5,9 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Portfolio() {
+  const allPieces = portfolioPieces;
+  const categories = portfolioCategories;
+
   return (
     <section id="work" className="py-16 md:py-24 bg-secondary">
       <div className="container max-w-7xl">
@@ -15,14 +18,44 @@ export default function Portfolio() {
           </p>
         </div>
 
-        <Tabs defaultValue={portfolioCategories[0]} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mx-auto max-w-xl mb-12">
-            {portfolioCategories.map((category) => (
+        <Tabs defaultValue="All" className="w-full">
+          <TabsList className="grid w-full grid-cols-3 md:grid-cols-5 lg:grid-cols-9 mx-auto max-w-4xl mb-12">
+            {categories.map((category) => (
               <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
             ))}
           </TabsList>
+          
+          <TabsContent value="All">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {allPieces.map((piece, index) => (
+                    <Card key={index} className="overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col">
+                      <CardContent className="p-0 flex-grow">
+                        <div className="relative h-96">
+                          <Image
+                            src={piece.image}
+                            alt={piece.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                            data-ai-hint={piece.aiHint}
+                          />
+                        </div>
+                      </CardContent>
+                      <div className="p-6">
+                        <h3 className="font-headline text-2xl font-semibold">{piece.title}</h3>
+                        <p className="text-muted-foreground mt-2 font-body flex-grow">{piece.description}</p>
+                      </div>
+                       <CardFooter>
+                          {piece.tags.map((tag) => (
+                            <Badge key={tag} variant="outline" className="mr-2">{tag}</Badge>
+                          ))}
+                      </CardFooter>
+                    </Card>
+                  ))}
+              </div>
+            </TabsContent>
 
-          {portfolioCategories.map((category) => (
+          {categories.filter(c => c !== 'All').map((category) => (
             <TabsContent key={category} value={category}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {portfolioPieces

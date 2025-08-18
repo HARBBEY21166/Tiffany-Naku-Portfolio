@@ -7,7 +7,7 @@ export type PortfolioPiece = {
   category: string;
 };
 
-export const portfolioCategories = ["Branding", "Web Design", "UI/UX", "Illustration"];
+export const portfolioCategories = ["All", "Branding", "Web Design", "UI/UX", "Illustration", "Packaging", "Editorial", "Mobile App", "Characters"];
 
 export const portfolioPieces: PortfolioPiece[] = [
   // Branding
@@ -17,14 +17,6 @@ export const portfolioPieces: PortfolioPiece[] = [
     image: "https://placehold.co/600x800.png",
     aiHint: "abstract vibrant",
     tags: ["Branding", "Event"],
-    category: "Branding",
-  },
-  {
-    title: "Gourmet Bites",
-    description: "Elegant packaging for a luxury chocolate brand.",
-    image: "https://placehold.co/600x800.png",
-    aiHint: "elegant packaging",
-    tags: ["Packaging", "Branding"],
     category: "Branding",
   },
   {
@@ -43,6 +35,14 @@ export const portfolioPieces: PortfolioPiece[] = [
     tags: ["Logo", "Branding"],
     category: "Branding",
   },
+  {
+    title: "Gourmet Bites",
+    description: "Elegant packaging for a luxury chocolate brand.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "elegant packaging",
+    tags: ["Packaging", "Branding"],
+    category: "Packaging",
+  },
   // Web Design
   {
     title: "Eco-Wear",
@@ -50,14 +50,6 @@ export const portfolioPieces: PortfolioPiece[] = [
     image: "https://placehold.co/600x800.png",
     aiHint: "fashion minimalist",
     tags: ["Web Design", "E-commerce"],
-    category: "Web Design",
-  },
-  {
-    title: "Urban Explorer",
-    description: "Engaging editorial layout for a travel magazine.",
-    image: "https://placehold.co/600x800.png",
-    aiHint: "magazine layout",
-    tags: ["Editorial", "Print", "Web"],
     category: "Web Design",
   },
   {
@@ -76,23 +68,15 @@ export const portfolioPieces: PortfolioPiece[] = [
     tags: ["Web Design", "Local Business"],
     category: "Web Design",
   },
+  {
+    title: "LearnLink",
+    description: "Intuitive design for an e-learning platform.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "elearning platform",
+    tags: ["UI/UX", "Education", "Web Design"],
+    category: "Web Design",
+  },
   // UI/UX
-  {
-    title: "Future Now",
-    description: "Futuristic UI/UX for a smart home application.",
-    image: "https://placehold.co/600x800.png",
-    aiHint: "futuristic dark",
-    tags: ["UI/UX", "Mobile App"],
-    category: "UI/UX",
-  },
-  {
-    title: "HealthTrack",
-    description: "User-friendly interface for a fitness tracking app.",
-    image: "https://placehold.co/600x800.png",
-    aiHint: "fitness app",
-    tags: ["UI/UX", "Health"],
-    category: "UI/UX",
-  },
   {
     title: "ConnectSphere",
     description: "Dashboard design for a social media analytics tool.",
@@ -102,12 +86,20 @@ export const portfolioPieces: PortfolioPiece[] = [
     category: "UI/UX",
   },
   {
-    title: "LearnLink",
-    description: "Intuitive design for an e-learning platform.",
+    title: "Future Now",
+    description: "Futuristic UI/UX for a smart home application.",
     image: "https://placehold.co/600x800.png",
-    aiHint: "elearning platform",
-    tags: ["UI/UX", "Education"],
-    category: "UI/UX",
+    aiHint: "futuristic dark",
+    tags: ["UI/UX", "Mobile App"],
+    category: "Mobile App",
+  },
+  {
+    title: "HealthTrack",
+    description: "User-friendly interface for a fitness tracking app.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "fitness app",
+    tags: ["UI/UX", "Health"],
+    category: "Mobile App",
   },
   // Illustration
   {
@@ -140,7 +132,15 @@ export const portfolioPieces: PortfolioPiece[] = [
     image: "https://placehold.co/600x800.png",
     aiHint: "character design",
     tags: ["Illustration", "Characters"],
-    category: "Illustration",
+    category: "Characters",
+  },
+  {
+    title: "Urban Explorer",
+    description: "Engaging editorial layout for a travel magazine.",
+    image: "https://placehold.co/600x800.png",
+    aiHint: "magazine layout",
+    tags: ["Editorial", "Print", "Web"],
+    category: "Editorial",
   },
 ];
 
