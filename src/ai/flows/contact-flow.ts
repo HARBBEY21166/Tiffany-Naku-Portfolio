@@ -4,8 +4,6 @@
  * This is a placeholder and does not actually send an email.
  *
  * - sendContactMessage - A function that handles sending the message.
- * - ContactMessage - The input type for the sendContactMessage function.
- * - ContactMessageOutput - The return type for the sendContactMessage function.
  */
 
 import { ai } from '@/ai/genkit';
@@ -16,12 +14,12 @@ const ContactMessageSchema = z.object({
   email: z.string().email(),
   message: z.string(),
 });
-export type ContactMessage = z.infer<typeof ContactMessageSchema>;
+type ContactMessage = z.infer<typeof ContactMessageSchema>;
 
 const ContactMessageOutputSchema = z.object({
   success: z.boolean(),
 });
-export type ContactMessageOutput = z.infer<typeof ContactMessageOutputSchema>;
+type ContactMessageOutput = z.infer<typeof ContactMessageOutputSchema>;
 
 export async function sendContactMessage(input: ContactMessage): Promise<ContactMessageOutput> {
   return contactFlow(input);
