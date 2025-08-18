@@ -16,13 +16,13 @@ export default function Pricing() {
                  <Image
                     src="https://placehold.co/1280x720.png"
                     alt="Video placeholder"
-                    layout="fill"
+                    fill
                     objectFit="cover"
                     className="transition-transform duration-300 group-hover:scale-105"
                     data-ai-hint="pricing video"
                 />
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <PlayCircle className="w-20 h-20 text-white/80 group-hover:text-white transition-colors duration-300 transform group-hover:scale-110" />
+                    <PlayCircle className="w-20 h-20 text-white/80 group-hover:text-white transition-colors duration-300 transform group-hover:scale-110 animate-pulse" />
                 </div>
             </div>
         </div>

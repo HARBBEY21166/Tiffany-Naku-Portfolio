@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { GraduationCap, Briefcase } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { GraduationCap, Briefcase, Award } from "lucide-react";
 
 export default function About() {
   return (
@@ -14,7 +14,7 @@ export default function About() {
         </div>
         <div className="grid md:grid-cols-5 gap-12 items-start">
           <div className="md:col-span-2">
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden shadow-lg">
                 <CardContent className="p-0">
                     <Image
                         src="https://placehold.co/600x700.png"
@@ -35,18 +35,25 @@ export default function About() {
               I believe that great design is not just about aesthetics, but about solving problems and communicating ideas effectively. I thrive on collaborating with clients to bring their visions to life and create memorable experiences.
             </p>
             <div className="space-y-6">
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 p-4 rounded-lg bg-secondary/50">
                     <div className="p-3 rounded-full bg-primary/10 text-primary"><GraduationCap className="h-6 w-6" /></div>
                     <div>
                         <h3 className="font-headline text-xl text-foreground font-semibold">Education</h3>
                         <p className="mt-1">B.F.A in Graphic Design, University of Creative Arts</p>
                     </div>
                 </div>
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 p-4 rounded-lg bg-secondary/50">
                     <div className="p-3 rounded-full bg-primary/10 text-primary"><Briefcase className="h-6 w-6" /></div>
                     <div>
                         <h3 className="font-headline text-xl text-foreground font-semibold">Experience</h3>
-                        <p className="mt-1">5+ years of experience working with startups and established brands on a wide range of projects, from brand identity to digital products.</p>
+                        <p className="mt-1">5+ years working with startups and established brands on a wide range of projects, from brand identity to digital products.</p>
+                    </div>
+                </div>
+                 <div className="flex items-start gap-4 p-4 rounded-lg bg-secondary/50">
+                    <div className="p-3 rounded-full bg-primary/10 text-primary"><Award className="h-6 w-6" /></div>
+                    <div>
+                        <h3 className="font-headline text-xl text-foreground font-semibold">Awards</h3>
+                        <p className="mt-1">Recognized for excellence in design, including the 'Innovate & Create' award for digital illustration.</p>
                     </div>
                 </div>
             </div>

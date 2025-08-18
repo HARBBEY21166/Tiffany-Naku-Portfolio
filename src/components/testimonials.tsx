@@ -10,6 +10,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { testimonials } from "@/lib/data";
+import { Quote } from "lucide-react";
 
 export default function Testimonials() {
   return (
@@ -34,8 +35,9 @@ export default function Testimonials() {
                 <div className="p-1 h-full">
                   <Card className="h-full flex flex-col justify-between">
                     <CardContent className="p-6 text-center md:text-left flex-grow">
+                      <Quote className="h-8 w-8 text-primary/20 mb-4" />
                       <p className="font-body text-lg italic text-muted-foreground mb-6">
-                        "{testimonial.quote}"
+                        {testimonial.quote}
                       </p>
                       <div>
                         <p className="font-headline text-lg font-semibold text-foreground">
