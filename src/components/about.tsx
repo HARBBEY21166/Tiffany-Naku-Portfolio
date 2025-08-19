@@ -17,7 +17,7 @@ export default function About() {
             <Card className="overflow-hidden shadow-lg">
                 <CardContent className="p-0">
                     <Image
-                        src="https://placehold.co/600x700.png"
+                        src="/images/designer-portrait.png"
                         alt="Portrait of the designer"
                         width={600}
                         height={700}
