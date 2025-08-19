@@ -18,7 +18,10 @@ export default function Pricing() {
                     src="/images/pricelist.mp4"
                     width="792"
                     height="1122"
-                    controls
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
                     className="transition-transform duration-300 group-hover:scale-105 w-full h-full object-cover"
                     data-ai-hint="pricing video"
                 ></video>
