@@ -13,9 +13,11 @@ export default function Pricing() {
           </p>
         </div>
         <div className="max-w-4xl mx-auto">
-            <div className="aspect-video bg-secondary rounded-lg overflow-hidden relative group cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <div className="bg-secondary rounded-lg overflow-hidden relative group cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-300">
                 <video
                     src="/images/pricelist.mp4"
+                    width="792"
+                    height="1122"
                     controls
                     className="transition-transform duration-300 group-hover:scale-105 w-full h-full object-cover"
                     data-ai-hint="pricing video"
