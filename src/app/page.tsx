@@ -30,7 +30,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // Adjust time as needed
+    }, 6000); // Adjust time as needed
 
     return () => clearTimeout(timer);
   }, []);

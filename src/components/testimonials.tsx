@@ -1,18 +1,22 @@
 "use client";
 
-import * as React from "react";
+import * as React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import { testimonials } from "@/lib/data";
 import { Quote } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay"
 
 export default function Testimonials() {
+  const plugin = React.useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  )
+
   return (
     <section id="testimonials" className="py-16 md:py-24 bg-secondary">
       <div className="container max-w-7xl">
@@ -23,6 +27,9 @@ export default function Testimonials() {
           </p>
         </div>
         <Carousel
+          plugins={[plugin.current]}
+          onMouseEnter={plugin.current.stop}
+          onMouseLeave={plugin.current.reset}
           opts={{
             align: "start",
             loop: true,
@@ -53,8 +60,6 @@ export default function Testimonials() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
         </Carousel>
       </div>
     </section>
