@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PlayCircle } from "lucide-react";
+import { Video } from "lucide-react";
 
 export default function Pricing() {
   return (
@@ -13,17 +14,12 @@ export default function Pricing() {
         </div>
         <div className="max-w-4xl mx-auto">
             <div className="aspect-video bg-secondary rounded-lg overflow-hidden relative group cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                 <Image
-                    src="https://placehold.co/1280x720.png"
-                    alt="Video placeholder"
-                    fill
-                    objectFit="cover"
-                    className="transition-transform duration-300 group-hover:scale-105"
+                <video
+                    src="/videos/pricelist.mp4"
+                    controls
+                    className="transition-transform duration-300 group-hover:scale-105 w-full h-full object-cover"
                     data-ai-hint="pricing video"
-                />
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <PlayCircle className="w-20 h-20 text-white/80 group-hover:text-white transition-colors duration-300 transform group-hover:scale-110 animate-pulse" />
-                </div>
+                ></video>
             </div>
         </div>
       </div>

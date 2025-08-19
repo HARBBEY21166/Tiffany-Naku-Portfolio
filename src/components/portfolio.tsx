@@ -13,7 +13,144 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { portfolioPieces, portfolioCategories } from '@/lib/data';
+
+const portfolioCategories = ["All", "Poster", "Web Design", "UI/UX", "Illustration", "Packaging", "Editorial", "Mobile App", "Characters"];
+
+const portfolioPieces = [
+  // Poster
+  {
+    title: "Vibrant Strokes",
+    description: "Bold, energetic branding for a digital art festival.",
+    image: "/images/updown.png",
+    aiHint: "abstract vibrant",
+    tags: ["Branding", "Event"],
+    category: "Branding",
+  },
+  {
+    title: "Eco-Friendly",
+    description: "Identity for a sustainable products company.",
+    image: "/images/eco-friendly.png",
+    aiHint: "eco friendly",
+    tags: ["Branding", "Identity"],
+    category: "Branding",
+  },
+  {
+    title: "SoundWave",
+    description: "Logo and branding for a music streaming startup.",
+    image: "/images/soundwave.png",
+    aiHint: "music logo",
+    tags: ["Logo", "Branding"],
+    category: "Branding",
+  },
+  {
+    title: "Gourmet Bites",
+    description: "Elegant packaging for a luxury chocolate brand.",
+    image: "/images/gourmet-bites.png",
+    aiHint: "elegant packaging",
+    tags: ["Packaging", "Branding"],
+    category: "Packaging",
+  },
+  // Web Design
+  {
+    title: "Eco-Wear",
+    description: "Minimalist, clean web design for a fashion brand.",
+    image: "/images/eco-wear.png",
+    aiHint: "fashion minimalist",
+    tags: ["Web Design", "E-commerce"],
+    category: "Web Design",
+  },
+  {
+    title: "Tech-Forward",
+    description: "Corporate website for a software development company.",
+    image: "/images/tech-forward.png",
+    aiHint: "tech website",
+    tags: ["Web Design", "Corporate"],
+    category: "Web Design",
+  },
+  {
+    title: "Artisan Cafe",
+    description: "Warm and inviting website for a local coffee shop.",
+    image: "/images/artisan-cafe.png",
+    aiHint: "cafe website",
+    tags: ["Web Design", "Local Business"],
+    category: "Web Design",
+  },
+  {
+    title: "LearnLink",
+    description: "Intuitive design for an e-learning platform.",
+    image: "/images/learn-link.png",
+    aiHint: "elearning platform",
+    tags: ["UI/UX", "Education", "Web Design"],
+    category: "Web Design",
+  },
+  // UI/UX
+  {
+    title: "ConnectSphere",
+    description: "Dashboard design for a social media analytics tool.",
+    image: "/images/connect-sphere.png",
+    aiHint: "dashboard analytics",
+    tags: ["UI/UX", "Dashboard"],
+    category: "UI/UX",
+  },
+  {
+    title: "Future Now",
+    description: "Futuristic UI/UX for a smart home application.",
+    image: "/images/future-now.png",
+    aiHint: "futuristic dark",
+    tags: ["UI/UX", "Mobile App"],
+    category: "Mobile App",
+  },
+  {
+    title: "HealthTrack",
+    description: "User-friendly interface for a fitness tracking app.",
+    image: "/images/health-track.png",
+    aiHint: "fitness app",
+    tags: ["UI/UX", "Health"],
+    category: "Mobile App",
+  },
+  // Illustration
+  {
+    title: "Retro Revival",
+    description: "Posters inspired by 80s synthwave aesthetics.",
+    image: "/images/retro-revival.png",
+    aiHint: "retro neon",
+    tags: ["Illustration", "Poster Design"],
+    category: "Illustration",
+  },
+  {
+    title: "Cosmic Dreams",
+    description: "A series of celestial-themed digital illustrations.",
+    image: "/images/cosmic-dreams.png",
+    aiHint: "space illustration",
+    tags: ["Illustration", "Digital Art"],
+    category: "Illustration",
+  },
+  {
+    title: "Botanical Wonders",
+    description: "Detailed vector illustrations of exotic plants.",
+    image: "/images/botanical-wonders.png",
+    aiHint: "plant illustration",
+    tags: ["Illustration", "Vector Art"],
+    category: "Illustration",
+  },
+  {
+    title: "Character-Verse",
+    description: "A collection of unique and expressive characters.",
+    image: "/images/character-verse.png",
+    aiHint: "character design",
+    tags: ["Illustration", "Characters"],
+    category: "Characters",
+  },
+  {
+    title: "Urban Explorer",
+    description: "Engaging editorial layout for a travel magazine.",
+    image: "/images/urban-explorer.png",
+    aiHint: "magazine layout",
+    tags: ["Editorial", "Print", "Web"],
+    category: "Editorial",
+  },
+];
+
 
 const PortfolioSection = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -91,7 +228,8 @@ const PortfolioSection = () => {
                       <Image
                         src={project.image}
                         alt={project.title}
-                        fill
+                        width={600}
+                        height={800}
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                         data-ai-hint={project.aiHint}
                       />
