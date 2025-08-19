@@ -21,7 +21,7 @@ const portfolioPieces = [
   {
     title: "Vibrant Strokes",
     description: "Bold, energetic branding for a digital art festival.",
-    image: "/images/updown.png",
+    image: "/images/vibrant-strokes.png",
     aiHint: "abstract vibrant",
     tags: ["Branding", "Event"],
     category: "Branding",

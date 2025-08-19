@@ -1,12 +1,3 @@
-export type PortfolioPiece = {
-  title: string;
-  description: string;
-  image: string;
-  aiHint: string;
-  tags: string[];
-  category: string;
-};
-
 export const testimonials = [
   {
     quote: "An absolutely stunning transformation of our brand identity. The creativity and attention to detail were second to none. Truly a visionary designer.",
