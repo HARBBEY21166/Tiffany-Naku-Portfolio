@@ -17,7 +17,7 @@ export default function About() {
             <Card className="overflow-hidden shadow-lg">
                 <CardContent className="p-0">
                     <Image
-                        src="/images/designer-portrait.png"
+                        src="/images/tiffany-naku.jpg"
                         alt="Portrait of the designer"
                         width={600}
                         height={700}
@@ -44,7 +44,7 @@ environment, given the chance.
                     <div className="p-3 rounded-full bg-primary/10 text-primary"><GraduationCap className="h-6 w-6" /></div>
                     <div>
                         <h3 className="font-headline text-xl text-foreground font-semibold">Education</h3>
-                        <p className="mt-1">B.F.A in Graphic Design, University of Creative Arts</p>
+                        <p className="mt-1">Bachelor of Arts, Graphic Design - EDUVOS University</p>
                     </div>
                 </div>
                 <div className="flex items-start gap-4 p-4 rounded-lg bg-secondary/50">
@@ -58,7 +58,7 @@ environment, given the chance.
                     <div className="p-3 rounded-full bg-primary/10 text-primary"><Award className="h-6 w-6" /></div>
                     <div>
                         <h3 className="font-headline text-xl text-foreground font-semibold">Awards</h3>
-                        <p className="mt-1">Recognized for excellence in design, including the 'Innovate & Create' award for digital illustration.</p>
+                        <p className="mt-1">Loeries Woolworths Student Portfolio Bootcamp (Top 75 in Africa)</p>
                     </div>
                 </div>
             </div>

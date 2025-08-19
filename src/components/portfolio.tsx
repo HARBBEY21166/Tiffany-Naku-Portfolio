@@ -14,20 +14,20 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const portfolioCategories = ["All", "Poster", "Web Design", "UI/UX", "Illustration", "Packaging", "Editorial", "Mobile App", "Characters"];
+const portfolioCategories = ["All", "Poster", "Brochure", "UI/UX", "Illustration", "Packaging", "Editorial", "Mobile App", "Characters"];
 
 const portfolioPieces = [
   // Poster
   {
-    title: "Vibrant Strokes",
+    title: "Lorem ipsum",
     description: "Bold, energetic branding for a digital art festival.",
-    image: "/images/vibrant-strokes.png",
+    image: "/images/updown.jpg",
     aiHint: "abstract vibrant",
     tags: ["Branding", "Event"],
     category: "Branding",
   },
   {
-    title: "Eco-Friendly",
+    title: "Lorem ipsum",
     description: "Identity for a sustainable products company.",
     image: "/images/eco-friendly.png",
     aiHint: "eco friendly",
@@ -35,7 +35,7 @@ const portfolioPieces = [
     category: "Branding",
   },
   {
-    title: "SoundWave",
+    title: "Lorem ipsum",
     description: "Logo and branding for a music streaming startup.",
     image: "/images/soundwave.png",
     aiHint: "music logo",
@@ -43,7 +43,7 @@ const portfolioPieces = [
     category: "Branding",
   },
   {
-    title: "Gourmet Bites",
+    title: "Lorem ipsum",
     description: "Elegant packaging for a luxury chocolate brand.",
     image: "/images/gourmet-bites.png",
     aiHint: "elegant packaging",
@@ -52,7 +52,7 @@ const portfolioPieces = [
   },
   // Web Design
   {
-    title: "Eco-Wear",
+    title: "Lorem ipsum",
     description: "Minimalist, clean web design for a fashion brand.",
     image: "/images/eco-wear.png",
     aiHint: "fashion minimalist",
@@ -60,7 +60,7 @@ const portfolioPieces = [
     category: "Web Design",
   },
   {
-    title: "Tech-Forward",
+    title: "Lorem ipsum",
     description: "Corporate website for a software development company.",
     image: "/images/tech-forward.png",
     aiHint: "tech website",
@@ -68,7 +68,7 @@ const portfolioPieces = [
     category: "Web Design",
   },
   {
-    title: "Artisan Cafe",
+    title: "Lorem ipsum",
     description: "Warm and inviting website for a local coffee shop.",
     image: "/images/artisan-cafe.png",
     aiHint: "cafe website",
@@ -76,7 +76,7 @@ const portfolioPieces = [
     category: "Web Design",
   },
   {
-    title: "LearnLink",
+    title: "Lorem ipsum",
     description: "Intuitive design for an e-learning platform.",
     image: "/images/learn-link.png",
     aiHint: "elearning platform",
@@ -85,7 +85,7 @@ const portfolioPieces = [
   },
   // UI/UX
   {
-    title: "ConnectSphere",
+    title: "Lorem ipsum",
     description: "Dashboard design for a social media analytics tool.",
     image: "/images/connect-sphere.png",
     aiHint: "dashboard analytics",
@@ -93,7 +93,7 @@ const portfolioPieces = [
     category: "UI/UX",
   },
   {
-    title: "Future Now",
+    title: "Lorem ipsum",
     description: "Futuristic UI/UX for a smart home application.",
     image: "/images/future-now.png",
     aiHint: "futuristic dark",
@@ -101,7 +101,7 @@ const portfolioPieces = [
     category: "Mobile App",
   },
   {
-    title: "HealthTrack",
+    title: "Lorem ipsum",
     description: "User-friendly interface for a fitness tracking app.",
     image: "/images/health-track.png",
     aiHint: "fitness app",
@@ -110,7 +110,7 @@ const portfolioPieces = [
   },
   // Illustration
   {
-    title: "Retro Revival",
+    title: "Lorem ipsum",
     description: "Posters inspired by 80s synthwave aesthetics.",
     image: "/images/retro-revival.png",
     aiHint: "retro neon",
@@ -118,7 +118,7 @@ const portfolioPieces = [
     category: "Illustration",
   },
   {
-    title: "Cosmic Dreams",
+    title: "Lorem ipsum",
     description: "A series of celestial-themed digital illustrations.",
     image: "/images/cosmic-dreams.png",
     aiHint: "space illustration",
@@ -126,7 +126,7 @@ const portfolioPieces = [
     category: "Illustration",
   },
   {
-    title: "Botanical Wonders",
+    title: "Lorem ipsum",
     description: "Detailed vector illustrations of exotic plants.",
     image: "/images/botanical-wonders.png",
     aiHint: "plant illustration",
@@ -134,7 +134,7 @@ const portfolioPieces = [
     category: "Illustration",
   },
   {
-    title: "Character-Verse",
+    title: "Lorem ipsum",
     description: "A collection of unique and expressive characters.",
     image: "/images/character-verse.png",
     aiHint: "character design",
@@ -142,7 +142,7 @@ const portfolioPieces = [
     category: "Characters",
   },
   {
-    title: "Urban Explorer",
+    title: "Lorem ipsum",
     description: "Engaging editorial layout for a travel magazine.",
     image: "/images/urban-explorer.png",
     aiHint: "magazine layout",
@@ -204,7 +204,7 @@ const PortfolioSection = () => {
               key={category}
               variant={activeCategory === category ? 'default' : 'ghost'}
               onClick={() => handleCategoryChange(category)}
-              className="capitalize"
+              className="capitalize hover:bg-[#c61affe6] hover:text-white"
             >
               {category}
             </Button>
