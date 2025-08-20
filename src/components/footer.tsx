@@ -1,4 +1,4 @@
-import { Instagram, Dribbble, Paintbrush, Linkedin } from "lucide-react";
+import { Instagram, Dribbble, Paintbrush, Linkedin, Mail } from "lucide-react";
 import { Button } from "./ui/button";
 
 export default function Footer() {
@@ -17,8 +17,8 @@ export default function Footer() {
             </a>
           </Button>
           <Button variant="ghost" size="icon" className="capitalize hover:bg-[#c61affe6] hover:text-white" asChild>
-            <a href="https://dribbble.com/tiffanynaku" aria-label="Dribbble">
-              <Dribbble className="h-5 w-5 icon-bounce" />
+            <a href="mailto:tiffanynaku@gmail.com" aria-label="Email">
+              <Mail className="h-5 w-5 icon-bounce" />
             </a>
           </Button>
           <Button variant="ghost" size="icon" className="capitalize hover:bg-[#c61affe6] hover:text-white" asChild>

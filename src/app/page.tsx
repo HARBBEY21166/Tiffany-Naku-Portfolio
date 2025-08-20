@@ -10,7 +10,6 @@ import Testimonials from '@/components/testimonials';
 import Contact from '@/components/contact';
 import Footer from '@/components/footer';
 import { motion, AnimatePresence } from 'framer-motion';
-import Pricing from '@/components/pricing';
 import Preloader from '@/components/preloader';
 
 const MotionSection = ({ children }: { children: React.ReactNode }) => (
@@ -55,7 +54,6 @@ export default function Home() {
             <Portfolio />
             <MotionSection><About /></MotionSection>
             <MotionSection><Testimonials /></MotionSection>
-            <MotionSection><Pricing /></MotionSection>
             <MotionSection><Contact /></MotionSection>
           </main>
           <Footer />
