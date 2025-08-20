@@ -12,17 +12,17 @@ export default function Footer() {
         </p>
         <div className="flex gap-2">
           <Button variant="ghost" size="icon" asChild>
-            <a href="#" aria-label="Instagram">
+            <a href="https://www.instagram.com/tiffanynaku/" aria-label="Instagram">
               <Instagram className="h-5 w-5 icon-bounce" />
             </a>
           </Button>
           <Button variant="ghost" size="icon" asChild>
-            <a href="#" aria-label="Dribbble">
+            <a href="https://dribbble.com/tiffanynaku" aria-label="Dribbble">
               <Dribbble className="h-5 w-5 icon-bounce" />
             </a>
           </Button>
           <Button variant="ghost" size="icon" asChild>
-            <a href="#" aria-label="Behance">
+            <a href="https://www.behance.net/tiffanynaku" aria-label="Behance">
               <Paintbrush className="h-5 w-5 icon-bounce" />
             </a>
           </Button>

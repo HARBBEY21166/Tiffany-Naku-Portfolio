@@ -86,8 +86,8 @@ export default function Contact() {
                 <h3 className="font-headline text-3xl font-bold">Contact Details</h3>
                 <div className="space-y-6">
                     <ContactInfoItem icon={Mail} title="Email" value="tiffanynaku@gmail.com" href="mailto:tiffanynaku@gmail.com" />
-                    <ContactInfoItem icon={Linkedin} title="LinkedIn" value="tiffany-naku" href="#" />
-                    <ContactInfoItem icon={Paintbrush} title="Behance" value="tiffanynaku" href="#" />
+                    <ContactInfoItem icon={Linkedin} title="LinkedIn" value="tiffany-naku" href="https://www.linkedin.com/in/tiffany-naku/" />
+                    <ContactInfoItem icon={Paintbrush} title="Behance" value="tiffanynaku" href="https://www.behance.net/tiffanynaku" />
                 </div>
             </div>
 
