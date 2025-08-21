@@ -19,7 +19,7 @@ const portfolioCategories = ["All", "Poster", "Brochure", "3D character", "Socia
 const portfolioPieces = [
   // Poster
   {
-    title: "Dread 3D",
+    title: "3D Character design",
     description: "A few renders showcasing my character creation skills.",
     image: "/images/3Dcharacter2.jpg",
     aiHint: "abstract vibrant",
