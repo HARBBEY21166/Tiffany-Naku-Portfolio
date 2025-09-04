@@ -25,6 +25,7 @@ const portfolioPieces = [
     aiHint: "abstract vibrant",
     tags: ["3D character", "Event"],
     category: "3D character",
+    link: "https://www.instagram.com/p/DCBjWQztknb/?img_index=1&igsh=NWRhdnN3dWJvNm9k",
   },
   {
     title: "Wedding Invitation",
@@ -33,6 +34,7 @@ const portfolioPieces = [
     aiHint: "abstract vibrant",
     tags: ["Poster", "Event"],
     category: "Poster",
+    link: "https://www.behance.net/tiffanynaku/projects",
   },
   {
     title: "ART",
@@ -41,6 +43,7 @@ const portfolioPieces = [
     aiHint: "eco friendly",
     tags: ["Illustration", "Identity"],
     category: "Illustration",
+    link: "https://www.behance.net/gallery/185986093/Digital-Illustrations",
   },
   {
     title: "Just Dance",
@@ -49,6 +52,7 @@ const portfolioPieces = [
     aiHint: "music logo",
     tags: ["Logo", "3D character"],
     category: "3D character",
+    link: "https://www.behance.net/tiffanynaku/projects",
   },
   {
     title: "The Shed",
@@ -57,6 +61,7 @@ const portfolioPieces = [
     aiHint: "elegant packaging",
     tags: ["Poster", "Branding"],
     category: "Poster",
+    link: "https://www.behance.net/tiffanynaku/projects",
   },
   // Web Design
   {
@@ -66,6 +71,7 @@ const portfolioPieces = [
     aiHint: "fashion minimalist",
     tags: ["Poster", "E-commerce"],
     category: "Poster",
+    link: "https://www.behance.net/tiffanynaku/projects",
   },
   {
     title: "Logos",
@@ -74,6 +80,7 @@ const portfolioPieces = [
     aiHint: "tech website",
     tags: ["Logos", "Corporate"],
     category: "Logos",
+    link: "https://www.behance.net/tiffanynaku/projects",
   },
   {
     title: "EVOLV3",
@@ -82,6 +89,7 @@ const portfolioPieces = [
     aiHint: "cafe website",
     tags: ["Poster", "Local Business"],
     category: "Poster",
+    link: "https://www.behance.net/tiffanynaku/projects",
   },
   {
     title: "AllStar",
@@ -90,6 +98,7 @@ const portfolioPieces = [
     aiHint: "elearning platform",
     tags: ["Illustration", "Education", "Web Design"],
     category: "Illustration",
+    link: "https://www.behance.net/tiffanynaku/projects",
   },
   // UI/UX
   {
@@ -99,6 +108,7 @@ const portfolioPieces = [
     aiHint: "dashboard analytics",
     tags: ["Branding", "Dashboard"],
     category: "Branding",
+    link: "https://www.behance.net/tiffanynaku/projects",
   },
   {
     title: "Front",
@@ -107,6 +117,7 @@ const portfolioPieces = [
     aiHint: "futuristic dark",
     tags: ["Branding", "Mobile App"],
     category: "Branding",
+    link: "https://www.behance.net/tiffanynaku/projects",
   },
   {
     title: "Back",
@@ -115,6 +126,7 @@ const portfolioPieces = [
     aiHint: "fitness app",
     tags: ["Branding", "Health"],
     category: "Branding",
+    link: "https://www.behance.net/tiffanynaku/projects",
   },
   // Illustration
   {
@@ -124,6 +136,7 @@ const portfolioPieces = [
     aiHint: "retro neon",
     tags: ["Poster", "Poster Design"],
     category: "Poster",
+    link: "https://www.behance.net/tiffanynaku/projects",
   },
   {
     title: "PBX",
@@ -132,6 +145,7 @@ const portfolioPieces = [
     aiHint: "space illustration",
     tags: ["Brochure", "Digital Art"],
     category: "Brochure",
+    link: "https://www.behance.net/tiffanynaku/projects",
   },
   {
     title: "THINK.CONECT.",
@@ -140,6 +154,7 @@ const portfolioPieces = [
     aiHint: "plant illustration",
     tags: ["Illustration", "Vector Art"],
     category: "Social Post",
+    link: "https://www.behance.net/tiffanynaku/projects",
   },
   {
     title: "Diva Wena",
@@ -148,6 +163,7 @@ const portfolioPieces = [
     aiHint: "character design",
     tags: ["Illustration", "Characters"],
     category: "3D character",
+    link: "https://www.behance.net/tiffanynaku/projects",
   },
   {
     title: "Pool Side",
@@ -156,6 +172,7 @@ const portfolioPieces = [
     aiHint: "magazine layout",
     tags: ["Poster", "Print"],
     category: "Poster",
+    link: "https://www.behance.net/tiffanynaku/projects",
   },
 ];
 
@@ -212,7 +229,7 @@ const PortfolioSection = () => {
               key={category}
               variant={activeCategory === category ? 'default' : 'ghost'}
               onClick={() => handleCategoryChange(category)}
-              className="capitalize hover:bg-[#c61affe6] hover:text-white"
+              className="capitalize hover:bg-[https://www.behance.net/tiffanynaku/projectsc61affe6] hover:text-white"
             >
               {category}
             </Button>
@@ -242,7 +259,9 @@ const PortfolioSection = () => {
                         data-ai-hint={project.aiHint}
                       />
                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span className="text-white font-semibold text-lg border-2 border-white rounded-full px-4 py-2">View Project</span>
+                        <a href={project.link} target="_blank" rel="noopener noreferrer">
+                          <span className="text-white font-semibold text-lg border-2 border-white rounded-full px-4 py-2">View Project</span>
+                        </a>
                       </div>
                     </div>
                     <div className="p-4">
