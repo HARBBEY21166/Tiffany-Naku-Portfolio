@@ -25,7 +25,7 @@ const portfolioPieces = [
     aiHint: "abstract vibrant",
     tags: ["3D character", "Event"],
     category: "3D character",
-    link: "https://www.instagram.com/p/DCBjWQztknb/?img_index=1&igsh=NWRhdnN3dWJvNm9k",
+    link: "https://www.behance.net/tiffanynaku",
   },
   {
     title: "Wedding Invitation",

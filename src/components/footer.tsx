@@ -1,4 +1,4 @@
-import { Instagram, Dribbble, Paintbrush, Linkedin, Mail } from "lucide-react";
+import { Dribbble, Paintbrush, Linkedin, Mail } from "lucide-react";
 import { Button } from "./ui/button";
 
 export default function Footer() {

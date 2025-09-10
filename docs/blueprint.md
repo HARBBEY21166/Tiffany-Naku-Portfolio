@@ -7,7 +7,7 @@
 - Contact Section: Contact form for potential clients to send inquiries directly.
 - Designer Introduction: An about me section to introduce the designer, with a picture and information about education and experience
 - AI Style Advisor: AI-powered 'style advisor' tool that uses the prompt provided by the user to reason if a design that is stylistically similar to the query has been included in the existing portfolio. Returns design recommendations based on visual characteristics.
-- Social Media Integration: Links to social media profiles (Behance, Dribbble, Instagram, etc.).
+- Social Media Integration: Links to social media profiles (Behance, Dribbble, etc.).
 - Testimonials: Include client testimonials to establish credibility.
 
 ## Style Guidelines:
